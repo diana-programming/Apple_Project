@@ -1,0 +1,1032 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+h4 {
+    font-size: 23px;
+}
+
+h6 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 18px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.header-row img {
+    height: 50%;
+    max-height: 60px;
+    margin-right: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+li {
+    padding-right: 20px;
+}
+
+li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    padding: 5px 10px;
+}
+
+li a:hover {
+    transition: all 0.1s linear;
+    font-weight: 550;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 50px;
+}
+
+.cart-icon {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 770px;
+}
+
+.modal {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    z-index: 150000;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#cart-modal {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+#cart-modal.show {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#cart-items {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-start: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    width: 550px;
+    box-sizing: border-box;
+}
+
+.cart-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-info h3 {
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity input {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 0 0px;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #0078ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    margin-top: 70px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.cart-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#total-price,
+.total-price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#checkout-modal {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+}
+
+#checkout-modal h2 {
+    margin-bottom: 20px;
+}
+
+#checkout-form label {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+#checkout-form input,
+#checkout-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.slide {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(100%);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    opacity: 0;
+}
+
+.slide.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide .left,
+.slide .right,
+.slide .left2,
+.slide .right2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    opacity: 0;
+    position: relative;
+}
+
+.slide .left {
+    transform: translateX(-100%);
+    padding-left: 170px;
+    padding-top: 90px;
+    padding-right: 100px;
+}
+
+.slide .right {
+    transform: translateX(100%);
+    flex-direction: column;
+    align-items: center;
+    padding-right: 120px;
+}
+
+.slide .left2 {
+    transform: translateX(-100%);
+    flex-direction: column;
+    padding-left: 150px;
+    padding-right: 130px;
+}
+
+.slide .right2 {
+    transform: translateX(100%);
+    align-items: center;
+    padding-right: 200px;
+    padding-top: 70px;
+}
+
+.slide.active .left,
+.slide.active .right,
+.slide.active .left2,
+.slide.active .right2 {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide .left img {
+    width: 350px;
+    height: auto;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    border-radius: 10px;
+}
+
+.slide .right img {
+    width: 300px;
+    height: auto;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    border-radius: 10px;
+}
+
+.slide .right h2 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    text-align: left;
+}
+
+.slide .left2 h2 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    text-align: left;
+}
+
+.title {
+    position: absolute;
+    justify-content: center;
+    top: 110px;
+    left: 12.5%;
+    transform: translateX(-50%);
+    font-size: 48px;
+    text-align: center;
+    animation: slide-from-top 1s ease-out forwards;
+    opacity: 0;
+}
+
+.slide #title {
+    font-size: 28px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    top: 230px;
+    left: 15%;
+    width: 900px;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 220px;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.card {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    width: 220px;
+    height: 300px;
+    text-align: center;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-5%);
+    transition: 0.3s linear;
+}
+
+.card p {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.hours {
+    font-size: 100px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #000;
+}
+
+.slide .left4 {
+    transform: translateX(-100%);
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide .left4 img {
+    width: 60%;
+    height: auto;
+}
+
+.slide.active .left4,
+.slide.active .right4 .cards-container {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.last-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.last-slide h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 400px;
+    z-index: 15000;
+}
+
+.reviews-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 170px;
+}
+
+.nav-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    z-index: 150000;
+    transform: translateY(-50%);
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav-button.prev {
+    left: 10px;
+}
+
+.nav-button.next {
+    right: 10px;
+}
+
+.reviews-slider {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+    width: 100%;
+}
+
+.review-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    min-width: 250px;
+    opacity: 0.5;
+    transform: scale(0.6);
+    filter: blur(3px);
+    transition: all 0.5s ease;
+}
+
+.review-card.active {
+    min-width: 700px;
+    height: 250px;
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+}
+
+.user-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.user-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.stars {
+    color: rgb(255, 234, 0);
+    font-size: 20px;
+}
+
+.review-text {
+    font-size: 16px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+footer .header-row {
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.slide.initial h2 {
+    transform: translateX(-150%);
+}
+
+.slide.initial p {
+    transform: translateX(150%);
+}
+
+.stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stage.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.stage h1 {
+    margin-bottom: 16px;
+    color: #000;
+    animation: slide-in 1s ease forwards;
+}
+
+.stage h4 {
+    margin-bottom: 8px;
+    animation: slide-in 1s ease forwards;
+    font-weight: normal;
+}
+
+.buy-button {
+    padding: 12px 20px;
+    font-size: 19px;
+    background-color: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.buy-button:hover {
+    background-color: #ffffff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.image1,
+.image2 {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 250px 70px;
+}
+
+.image1 {
+    width: 80%;
+}
+
+.image2 {
+    padding-left: 750px;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 250px 70px;
+}
+
+.image-container img {
+    width: 20%;
+    height: 50%;
+    opacity: 1;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.image-container img.airpods-left {
+    transform: translateX(-150%);
+}
+
+.image-container img.airpods-right {
+    transform: translateX(150%);
+}
+
+.stage img {
+    width: 20%;
+    height: 50%;
+    opacity: 1;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.airpods-left {
+    transform: translateX(-150%);
+}
+
+.airpods-right {
+    transform: translateX(150%);
+}
+
+.stage-1 h1 {
+    font-size: 140px;
+}
+
+.stage-1 img.airpods-right {
+    opacity: 1;
+    transform: translateX(0);
+    width: 500px;
+    padding: 100px 0;
+}
+
+.stage-2 h1 {
+    font-size: 90px;
+}
+
+.stage-2 img.airpods-right {
+    opacity: 1;
+    transform: translateX(30%);
+    width: 350px;
+}
+
+.stage-2 img.rotate {
+    transform: rotate(-15deg);
+    opacity: 1;
+}
+
+.stage-3 h1 {
+    font-size: 60px;
+}
+
+.stage-3 .image1 .airpods-left {
+    transform: scale(1.6);
+    opacity: 1;
+    position: absolute;
+    left: 120px;
+    width: 190px;
+    height: auto;
+}
+
+.stage-3 .image2 .airpods-right {
+    transform: scale(1.3);
+    opacity: 1;
+    position: absolute;
+    right: -800px;
+    top: 350px;
+    width: 55%;
+    height: 50%;
+}
+
+.stage-3 .image1 {
+    width: 50px;
+    height: 50px;
+}
+
+.stage-3 .image2 {
+    width: 330px;
+    height: 530px;
+    padding: 0;
+    margin: 0;
+}
+
+.h1-iphone {
+    margin-top: -150px;
+}
+
+.image-container-iphone {
+    padding-top: 350px;
+    justify-content: center;
+}
+
+.stage-1 .iphone {
+    width: 600px;
+    margin-left: 260px;
+}
+
+.stage-2 .iphone-back {
+    width: 180px;
+    height: auto;
+    transform: rotate(-10deg);
+    opacity: 1;
+    margin-top: -100px;
+    margin-left: 30px;
+}
+
+.stage-2 .iphone-front {
+    width: 300px;
+    height: auto;
+    transform: translateX(50%);
+    opacity: 1;
+    margin-top: -80px;
+}
+
+.stage-3 .iphone-back {
+    width: 200px;
+    height: auto;
+    transform: scale(1.2);
+    opacity: 1;
+    position: absolute;
+    left: 150px;
+    top: 170px;
+}
+
+.stage-3 .iphone-front {
+    width: 200px;
+    height: auto;
+    transform: scale(1.2);
+    opacity: 1;
+    position: absolute;
+    left: 900px;
+    top: 190px;
+}
+
+#iphone-in-hand {
+    height: 480px;
+    width: auto;
+    margin-left: -70px;
+    margin-top: 70px;
+}
+
+#iphone-video {
+    width: 650px;
+    margin-right: -220px;
+}
+
+.title-iphone {
+    margin-left: 230px;
+}
+
+.iphone-front-back {
+    margin-top: -50px;
+    margin-left: 70px;
+}
+
+.cards-container-iphone {
+    margin-right: 70px;
+}
+
+.hero {
+    text-align: center;
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    top: -100px;
+    left: 10%;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 75px;
+    animation: slide-from-top 1s ease-out forwards;
+}
+
+.hero p {
+    margin-top: 50px;
+    animation: slide-from-top 1s ease-out forwards;
+}
+
+.photo-container {
+    position: absolute;
+    top: 90%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-photos,
+.right-photos {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-photos {
+    margin-left: -120px;
+}
+
+.right-photos {
+    margin-right: -120px;
+}
+
+.photo {
+    position: relative;
+    width: 110px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    transform: rotate(10deg);
+    transition: transform 0.3s;
+    margin: 25px;
+}
+
+.photo:hover {
+    transform: scale(1.1) rotate(0);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-left {
+    animation: moveLeft 1s infinite alternate ease-in-out;
+}
+
+.photo-right {
+    animation: moveRight 1s infinite alternate ease-in-out;
+}
+
+#steves {
+    width: 400px;
+    margin-right: -70px;
+}
+
+#title-home {
+    left: 23%;
+    top: 17%;
+}
+
+#right-home {
+    left: 5%;
+    bottom: 7%;
+}
+
+#right-home img {
+    width: 110px;
+}
+
+#right-home #macbook {
+    width: 150px;
+}
+
+.last-slide-home #title {
+    top: 30%;
+}
+
+.stage-1 .macbook {
+    width: 700px;
+    height: auto;
+    margin-top: -150px;
+    margin-left: 230px;
+}
+
+.stage-2 .macbook-side {
+    width: 300px;
+    height: auto;
+    margin-top: -150px;
+    margin-left: -30px;
+}
+
+.stage-2 .macbook {
+    width: 300px;
+    height: auto;
+    transform: translateX(30%);
+    margin-left: 170px;
+    margin-top: 150px;
+}
+
+.image2-macbook {
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    width: auto;
+    height: auto;
+}
+
+.stage-3 .macbook-front {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 45%;
+    top: 30%;
+}
+
+.stage-3 .macbook {
+    width: 300px;
+    height: auto;
+    position: absolute;
+    left: 265%;
+    top: 50%;
+}
+
+.left4-macbook img {
+    width: 400px;
+    margin-top: 25%;
+}
+
+#macbook-portable {
+    height: 350px;
+}
+
+@keyframes moveLeft {
+    from {
+        transform: rotate(-10deg);
+    }
+
+    to {
+        transform: rotate(-3deg);
+    }
+}
+
+@keyframes moveRight {
+    from {
+        transform: rotate(10deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-150%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-from-top {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
